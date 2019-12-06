@@ -1,2 +1,0 @@
-# CricketReactApp
-Created with CodeSandbox
