@@ -1,52 +1,44 @@
 body {
-  
-  margin:0px auto;
-  font-family: 'Roboto';
-  background:#f1f1f1;
-  
+  margin: 0px auto;
+  font-family: "Roboto";
+  background: #f1f1f1;
 }
 @media only screen and (min-width: 500px) {
-  body{
-    width:50%;
+  body {
+    width: 50%;
   }
 }
-.color1
-{
- color:whitesmoke;
- font-weight: bold;
- background-color:#2979ff;
- min-width:100%;;
+.color1 {
+  color: whitesmoke;
+  font-weight: bold;
+  background-color: #2979ff;
+  min-width: 100%;
 }
-.head
-{
-  background:#fff;
-  padding:10px;
+.head {
+  background: #fff;
+  padding: 10px;
 }
-.color2
-{
-  color:whitesmoke;
- font-weight: bold;
- background-color:#2979ff;
- min-width:100%;
+.color2 {
+  color: whitesmoke;
+  font-weight: bold;
+  background-color: #2979ff;
+  min-width: 100%;
 }
-table
-{
-  border:1px dotted white;
+table {
+  border: 1px dotted white;
   box-shadow: 5px 5px 5px 5px #f1f1f1;
   border-radius: 10px 10px 10px 10px;
   padding: 10px;
-  min-width:100%;
+  min-width: 100%;
+  text-align: justify;
 }
 
-.centerText
-{
-  text-align:center;
-  padding:3%;
+.centerText {
+  text-align: center;
+  padding: 3%;
 }
-.backgroundYellow
-{
+.backgroundYellow {
   background-color: bisque;
   border-radius: 15px;
   font-weight: bold;
-  
 }
