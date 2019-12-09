@@ -1,61 +1,68 @@
-import React from "react";
+import React, { Component } from "react";
 import "./index.css";
 
-const Display = props => {
-  const scores1 =
-    props.matchStatus !== "upcoming"
-      ? props.matchScore[0].teamScore[0].runsScored +
-        " / " +
-        props.matchScore[0].teamScore[0].wickets
-      : "0/0";
-  const scores2 =
-    props.matchStatus !== "upcoming"
-      ? props.matchScore[1].teamScore[0].runsScored +
-        " / " +
-        props.matchScore[1].teamScore[0].wickets
-      : "0/0";
+class Display extends Component {
+  componentDidCatch(error, info) {
+    // Display fallback UI
+  }
+  render() {
+    const scores1 = " ";
+    const scores2 = " ";
 
-  var timeStamp = Math.floor(Date.now());
-  const result =
-    props.matchStatus === "completed"
-      ? props.matchResult
-      : Math.max(0, Math.floor((props.startDate - timeStamp) / 60000)) === 0
-      ? props.matchScore.length === 2
-        ? props.matchScore[1].teamScore[0].battingTeam + " is Batting "
-        : props.matchScore[0].teamScore[0].battingTeam + " is Batting "
-      : Math.max(0, Math.floor((props.startDate - timeStamp) / 60000)) +
-        " minutes to toss";
-  return (
-    <center>
-      <br />
-      <table>
-        <thead>
+    var timeStamp = Math.floor(Date.now());
+    const result =
+      this.props.matchStatus === "completed"
+        ? this.props.matchResult
+        : this.props.matchStatus === "upcoming"
+        ? Math.max(
+            0,
+            Math.floor((this.props.startDate - timeStamp) / 60000)
+          ) === 0
+          ? "Toss Done"
+          : Math.floor((this.props.startDate - timeStamp) / 60000) +
+            " minutes to toss"
+        : "Match is Running";
+
+    return (
+      <center>
+        <br />
+        <table>
+          <thead>
+            <tr>
+              <th className="centerText">{this.props.seriesName}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <center>
+                <td>
+                  {this.props.matchNumber}.{this.props.venue}
+                </td>{" "}
+              </center>
+            </tr>
+          </tbody>
           <tr>
-            <th className="centerText">{props.seriesName}</th>
+            <center>
+              <td>
+                Team 1: {this.props.homeTeamName} {scores1}{" "}
+              </td>{" "}
+            </center>
           </tr>
-        </thead>
-        <tbody>
           <tr>
-            <td>
-              {props.matchNumber}.{props.venue}
-            </td>
+            <center>
+              {" "}
+              <td>
+                Team 2: {this.props.awayTeamName} {scores2}{" "}
+              </td>
+            </center>
           </tr>
-        </tbody>
-        <tr>
-          <td>
-            {props.homeTeamName} - {scores1}{" "}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            {props.awayTeamName} - {scores2}{" "}
-          </td>
-        </tr>
-        <tr>
-          <td className="centerText backgroundYellow">{result}</td>
-        </tr>
-      </table>
-    </center>
-  );
-};
+          <br />
+          <tr>
+            <td className="centerText backgroundYellow">{result}</td>
+          </tr>
+        </table>
+      </center>
+    );
+  }
+}
 export default Display;
